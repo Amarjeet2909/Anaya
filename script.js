@@ -58,8 +58,12 @@ function escapeNo(event) {
   escapes++;
 }
 
-noButton.addEventListener("pointerenter", escapeNo);
-noButton.addEventListener("pointerdown", escapeNo);
+noButton.addEventListener("pointerenter", (event) => {
+  if (event.pointerType === "mouse") escapeNo(event);
+});
+noButton.addEventListener("pointerdown", (event) => {
+  if (event.pointerType === "mouse") escapeNo(event);
+});
 noButton.addEventListener("click", escapeNo);
 noButton.addEventListener("keydown", (event) => {
   if (event.key === "Enter" || event.key === " ") escapeNo(event);
